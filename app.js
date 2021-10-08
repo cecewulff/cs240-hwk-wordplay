@@ -4,8 +4,8 @@ function sixLetters(dictionary) {
 }
 //function to randomly select a word from the array of 6 letter words
 function randomWord(rootWords) {
-  let wordNumber = Math.floor(Math.random() * rootWords.length());
-  console.log(rootWords[wordNumber]);
+  let wordNumber = Math.floor(Math.random() * rootWords.length()); // finding random place in array
+  console.log(rootWords[wordNumber]); //printing string at that random place
 }
 
 //first attempt at same function with forEach
