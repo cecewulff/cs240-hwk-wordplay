@@ -73,3 +73,11 @@ function allWords(letter) {
   } else {
   }
 }
+
+let input = prompt("Start Guessing!"); //prompt for start of game
+
+function Correct(input) {}
+
+let correct = alert("Correct! ${");
+
+//hi
