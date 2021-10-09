@@ -30,6 +30,17 @@ function splitInletters(mysteryWord) {
   return letter;
 }
 
+//recursive method for "splitInletters"
+function splitInletters(mysteryWord) {
+    if (mysteryWord.length == 0) {
+        return mysteryWord[0];
+    }else {
+        const letter = [];
+    }
+    
+
+}
+
 //first attempt at same function with forEach
 //function sixLetters(dictionary) {
 //let root = [];
@@ -44,10 +55,17 @@ function splitInletters(mysteryWord) {
 function allWords(letter); {
 if (letter.length == 0) {
     return letter[0];
-}
+}else {
     let words = [];
-if
-if()
+    return words;
+}
+let starting = allWords(letter.splice(0));
+for (let i = 0; i < starting.length; i++)
+    for (let j = 0; j < ) {
+
+    }
+
+
 
 
 }
