@@ -3,21 +3,20 @@
 //   let rootWords = dictionary.filter((x) => x.length() == 6);
 // }
 
-//first attempt at same function with forEach
+//first attempt at same function 
 function sixLetters(dictionary) {
   const root = [];
-  for (var i = 0; i < dictionary.length + 1; i++) {
-    //if (dictionary[i].length < 2 && dictionary[i].length < 7)
+  for (let i = 0; i < dictionary.length + 1; i++) {
     if (dictionary[i].substring(6) == null);
     root.push(dictionary[i]);
   }
-}
+    let mysteryWord = root[Math.floor(Math.random() * root.length())]
+    return mysteryWord;
+  }
+
 
 //function to randomly select a word from the array of 6 letter words
-function randomWord(rootWords) {
-  let wordNumber = Math.floor(Math.random() * rootWords.length()); // finding random place in array
-  let mysteryWord = rootWords[wordNumber];
-}
+
 
 //function to find root word with arrow notation and "filter"
 //function to randomly select a word from the array of 6 letter words
@@ -33,10 +32,10 @@ function randomWord(rootWords) {
 
 //i want to add the letters of the mystery word to an array so they are more easily distinguisable
 //function to loop through the mystery word and add each letter to an array the "old way"
-function splitInletters(mysteryWord) {
+function splitInletters() {
   const letter = [];
   for (i = 0; i < 7; i++) {
-    letter.push(substring(i));
+    letter.push(root[i]);
   }
   return letter;
 }
@@ -62,7 +61,7 @@ function splitInletters(mysteryWord) {
 // }
 
 function allWords(letter) {
-  let words = [];
+  const words = [];
 
   for (i = 0; i < letter.length(); i++)
     for (j = 0; j < letter.length(); j++)
@@ -77,22 +76,31 @@ function allWords(letter) {
 let input = prompt("Start Guessing!"); //prompt for start of game
 
 //original method for findind inputted word in list
-function Correct(input) {
-  for (let i = 0; i < words.length + 1; i++)
-    if (words[i] == input) {
-      alert(`Correct! ${input}`);
-    } else {
-      alert(`${input} is not a word!`);
-    }
-}
+// function Correct(input) {
+//   for (let i = 0; i < words.length + 1; i++)
+//     if (words[i] == input) {
+//       alert(`Correct! ${input}`);
+//     } else {
+//       alert(`${input} is not a word!`);
+//     }
+// }
 
 //second method for findind inputted word in list using forEach
-function searchWords(input) {
-  words.forEach((input) => {
-    if (words[i] == input) {
+function searchWords() {
+  const GuessedWords = [];
+    words.forEach((function(words)) => {
+
+    
+        if (words[i] !== input) {
       alert(`Correct! ${input}`);
+      GuessedWords.push(input);
+      console.clear();
     } else {
       alert(`${input} is not a word!`);
+      console.clear();
     }
   });
 }
+
+
+
