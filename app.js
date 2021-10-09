@@ -60,7 +60,7 @@ function splitInletters(mysteryWord) {
 //     }
 // }
 
-function allWords(letter); {
+function allWords(letter) {
     let words = [];
     
 for(i = 0; i < letter.length(); i++) 
