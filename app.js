@@ -22,8 +22,8 @@ function randomWord(rootWords) {
 
 //i want to add the letters of the mystery word to an array so they are more easily distinguisable
 //function to loop through the mystery word and add each letter to an array the "old way"
-function letters(mysteryWord) {
-  let letter = [];
+function splitInletters(mysteryWord) {
+  const letter = [];
   for (i = 0; i < 7; i++) {
     letter.push(substring(i));
   }
@@ -37,3 +37,17 @@ function letters(mysteryWord) {
 //if (x.length() == 6) root.push(x);
 //});
 //return root();
+
+
+//functions to compute all possible words with "mysteryword"
+//function for two letter words
+function allWords(letter); {
+if (letter.length == 0) {
+    return letter[0];
+}
+    let words = [];
+if
+if()
+
+
+}
