@@ -30,17 +30,6 @@ function splitInletters(mysteryWord) {
   return letter;
 }
 
-//recursive method for "splitInletters"
-function splitInletters(mysteryWord) {
-    if (mysteryWord.length == 0) {
-        return mysteryWord[0];
-    }else {
-        const letter = [];
-    }
-    
-
-}
-
 //first attempt at same function with forEach
 //function sixLetters(dictionary) {
 //let root = [];
@@ -50,22 +39,40 @@ function splitInletters(mysteryWord) {
 //return root();
 
 
+
 //functions to compute all possible words with "mysteryword"
-//function for two letter words
+
+// function allWords(letter); {
+//     if (letter.length == 1) {  //check if letter array if empty
+//         return letter;
+//     }else {
+//         let words = []; 
+// let starting = letter.splice(0); //starting letter in word, i want this to move its way down the array
+// for (let i = 0; i < starting.length(); i++) //checking all words that start at [i] in the letter array
+//     for(let j = i + 1; j < letter.length(); j++) //checking all the the other letters after 
+// let temp = (letter[0][j] + starting[i]);
+
+// if(dictionary.includes(temp)) {
+// return letter.map(temp);
+// }else{
+//     temp = next;
+// }
+//     }
+// }
+
 function allWords(letter); {
-if (letter.length == 0) {
-    return letter[0];
-}else {
     let words = [];
-    return words;
-}
-let starting = allWords(letter.splice(0));
-for (let i = 0; i < starting.length; i++)
-    for (let j = 0; j < ) {
+    
+for(i = 0; i < letter.length(); i++) 
+    for(j = 0; j < letter.length(); j++)
+    let temp = letter[0][j] + starting[i];
 
-    }
-
-
-
+if(dictionary.includes(temp)) {
+    words.push(temp);
+}else{
 
 }
+
+
+}
+
