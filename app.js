@@ -76,24 +76,23 @@ function allWords(letter) {
 
 let input = prompt("Start Guessing!"); //prompt for start of game
 
-
-
+//original method for findind inputted word in list
 function Correct(input) {
-    for(let i = 0; i < words.length + 1; i++)
-        if(words[i] == input){
-            alert(`Correct! ${input}`);
-        }else{
-            alert(`${input} is not a word!`);
-        }
-        
-
+  for (let i = 0; i < words.length + 1; i++)
+    if (words[i] == input) {
+      alert(`Correct! ${input}`);
+    } else {
+      alert(`${input} is not a word!`);
+    }
 }
 
-function Incorrect(input) {
-    for(let i = 0; i < words.length + 1; i++)
-        if(words[i] == input)
-        
+//second method for findind inputted word in list using forEach
+function searchWords(input) {
+  words.forEach((input) => {
+    if (words[i] == input) {
+      alert(`Correct! ${input}`);
+    } else {
+      alert(`${input} is not a word!`);
+    }
+  });
 }
-
-
-//hi
