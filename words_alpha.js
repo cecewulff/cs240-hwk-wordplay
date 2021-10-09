@@ -1,5 +1,3 @@
-var dictionary;
-export { dictionary };
 const dictionary = [
   "a",
   "aa",

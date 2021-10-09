@@ -1,18 +1,15 @@
-import * as Dictionary from "./words_alpha.js";
-Dictionary.dictionary;
-
 //function to find root word with arrow notation and "filter"
 // function sixLetters(dictionary) {
 //   let rootWords = dictionary.filter((x) => x.length() == 6);
 // }
 
 //first attempt at same function with forEach
-function sixLetters(Dictionary) {
+function sixLetters(dictionary) {
   const root = [];
-  for (var i = 0; i < Dictionary.length + 1; i++) {
+  for (var i = 0; i < dictionary.length + 1; i++) {
     //if (dictionary[i].length < 2 && dictionary[i].length < 7)
-    if (Dictionary[i].substring(6) == null);
-    root.push(Dictionary[i]);
+    if (dictionary[i].substring(6) == null);
+    root.push(dictionary[i]);
   }
 }
 
