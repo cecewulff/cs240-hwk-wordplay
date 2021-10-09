@@ -38,18 +38,16 @@ function splitInletters(mysteryWord) {
 //});
 //return root();
 
-
-
 //functions to compute all possible words with "mysteryword"
 
 // function allWords(letter); {
 //     if (letter.length == 1) {  //check if letter array if empty
 //         return letter;
 //     }else {
-//         let words = []; 
+//         let words = [];
 // let starting = letter.splice(0); //starting letter in word, i want this to move its way down the array
 // for (let i = 0; i < starting.length(); i++) //checking all words that start at [i] in the letter array
-//     for(let j = i + 1; j < letter.length(); j++) //checking all the the other letters after 
+//     for(let j = i + 1; j < letter.length(); j++) //checking all the the other letters after
 // let temp = (letter[0][j] + starting[i]);
 
 // if(dictionary.includes(temp)) {
@@ -61,18 +59,14 @@ function splitInletters(mysteryWord) {
 // }
 
 function allWords(letter) {
-    let words = [];
-    
-for(i = 0; i < letter.length(); i++) 
-    for(j = 0; j < letter.length(); j++)
-    let temp = letter[0][j] + starting[i];
+  let words = [];
 
-if(dictionary.includes(temp)) {
+  for (i = 0; i < letter.length(); i++)
+    for (j = 0; j < letter.length(); j++)
+      words.push(letter[0][j] + starting[i]);
+
+  if (dictionary.includes(words[words.length() - 1])) {
     words.push(temp);
-}else{
-
+  } else {
+  }
 }
-
-
-}
-
