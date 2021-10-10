@@ -26,26 +26,26 @@
 
 
 //first attempt at same function 
-function splitInletters(mysteryWord); {
+function splitInletters(selectedWord) {
     const letter = [];
-    for (i = 0; i < 7; i++) {
-      letter.push(mysteryWord.substring(i));
+        for (i = 0; i < 7; i++) {
+      letter.push(selectedWord.substring(i));
     }
     return letter; 
-
-    function selectedWord(root){
-        return root[Math.floor(Math.random() * root.length())]
-
 }
+
 function sixLetters(dictionary) {
     const root = [];
     for (let i = 0; i < dictionary.length + 1; i++) {
       if (dictionary[i].substring(6) == null);
       root.push(dictionary[i]);
     }
+    return root;
   } 
-  }
   
+  function selectedWord(root) {
+    return root[Math.floor(Math.random() * root.length())]
+  }
   
 
 //function to randomly select a word from the array of 6 letter words
