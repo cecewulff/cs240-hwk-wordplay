@@ -89,49 +89,42 @@ function selectedWord(root) {
 
 function wordComb(letter) {
   const words = [];
-  let part = [];
-  let temp = " "; 
+  //let part = [];
+  let temp = " ";
+  let temp2 = " ";  
   
     for (let k = 0; k < letter.length() + 1; k++) //looping through inital array to add single letter words
         if(!words.includes(letter[k])) { //to avoid duplicates
             words.push(letter[k]);  //adding if not already there
-            part.push(letter[k]); //adding letters to another array to help build words longer than 2 chars
+            temp =letter[k]; //adding letters to another array to help build words longer than 2 chars
         }
         
 if (!letter.length() == 0) {  
     for (let i = 0; i < letter.length() + 1; i++) //adding words with more than one 
-    part.push(part[k] + letter[i]); // to make longer combinations of words later
-    words.push(part[k] + letter[i]); // pushing two letter combinations
+    temp = temp + letter[i];
+    temp2 = temp; // to make longer combinations of words later
+    words.push(temp); // pushing two letter combinations
 
     for (let j = 0; j < letter.length() + 1; j++) //loop through the rest of the letters
-    words.push(part[k] + letter[i] + letter[j]); //pushing 3 letter words
-    temp = part[k] + letter[i] + letter[j]; //change to part.push?
-    words.push(temp + letters[i]);
- //checking if all the possible three letter words have been generated
-    if(temp = `${part[letter.length()]} + ${letter[letter.length()]} + ${letter[letter.length()]}`) 
-    words.push()
-       
+    temp = temp + letter[j]; //three letters
+    words.push(temp); //pushing 3 letter words
+    temp = temp + letter[k]; //creating 4 letter words
+    temp2 = temp2 + temp; //creating 5 letter words
+    words.push(temp); //pushing four letter words
+    words.push(temp2); //pushing 3 letter words
 
-    
-
-
-    
-    if
-    if()
-    words.push
-    words.push(part[i] + letter[i] + letter[j])
-    if (!dictionary.includes(letter[i] + letter[j])) {
-      words.push(letter[i] + letter[j]); 
-    }else{
+realWords(words); {
+    for(let m = 0; m < words.length() + 1; m++) {
+        if(!dictionary.includes(words[m])){
+            words.pop(words[m]);
+        }else{
+            return words;
+        }
 
     }
-
-
-  
-    words.pop();
-  } else {
-  }
+    
 }
+   
 
 let input = prompt("Start Guessing!"); //prompt for start of game
 
