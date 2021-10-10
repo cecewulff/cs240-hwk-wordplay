@@ -43,7 +43,7 @@ function sixLetters(dictionary) {
     return root;
   } 
   
-  function selectedWord(root) {
+function selectedWord(root) {
     return root[Math.floor(Math.random() * root.length())]
   }
   
@@ -87,13 +87,16 @@ function sixLetters(dictionary) {
 //     }
 // }
 
-function allWords(letter) {
+function wordComb(letter) {
   const words = [];
-
-  for (i = 0; i < letter.length(); i++)
-    for (j = 0; j < letter.length(); j++)
+    for (i = 0; i < letter.length(); i++) //loop through each letter so it starts first
+        if(!dictionary.includes(words[i])) {
+            words.push(letter[i]); // adding 
+        }
+    
+    for (j = i + 1; j < letter.length(); j++) //loop through the rest of the letters
       //words.push(letter[0][j] + starting[i]);
-      return (letter[0][j] + starting[i]);
+      words.push(letter[i] + letter[j]);
 
   if (dictionary.includes(words[words.length() - 1])) {
     words.pop();
@@ -117,8 +120,6 @@ let input = prompt("Start Guessing!"); //prompt for start of game
 function searchWords() {
   const GuessedWords = [];
     words.forEach((function(words)) => {
-
-    
         if (words[i] !== input) {
       alert(`Correct! ${input}`);
       GuessedWords.push(input);
