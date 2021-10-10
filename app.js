@@ -25,16 +25,17 @@
 // }
 
 
-//first attempt at same function 
-function splitInletters(selectedWord) {
+//first attempt at function to find 6 letter word
+
+function splitInletters(FINALword) { //this function splits the scrambled words into its characters and puts them into an array to make making combinations using the same letters easier. 
     const letter = [];
         for (i = 0; i < 7; i++) {
-      letter.push(selectedWord.substring(i));
+      letter.push(FINALword.substring(i));
     }
     return letter; 
 }
 
-function sixLetters(dictionary) {
+function sixLetters(dictionary) { //this function searches the dictionary for 6 letter long words
     const root = [];
     for (let i = 0; i < dictionary.length + 1; i++) {
       if (dictionary[i].substring(6) == null);
@@ -43,8 +44,9 @@ function sixLetters(dictionary) {
     return root;
   } 
   
-function selectedWord(root) {
-    return root[Math.floor(Math.random() * root.length())]
+function selectedWord(root) { //this function randomly chooses a word from the new array of 6 letter words. 
+    const FINALword = root[Math.floor(Math.random() * root.length())]
+    return FINALword;
   }
   
 
@@ -87,36 +89,36 @@ function selectedWord(root) {
 //     }
 // }
 
+//these functions create all permutations possible with the given letters using the array of letters
 function wordComb(letter) {
   const words = [];
-  //let part = [];
-  let temp = " ";
+  let temp = " "; //temps used to hold permutations of words already created to make it easier to create longer words
   let temp2 = " ";  
   
-    for (let k = 0; k < letter.length() + 1; k++) //looping through inital array to add single letter words
+    for (let k = 0; k < letter.length() + 1; k++) //looping through the array for the first time to add possible single letter words
         if(!words.includes(letter[k])) { //to avoid duplicates
             words.push(letter[k]);  //adding if not already there
-            temp =letter[k]; //adding letters to another array to help build words longer than 2 chars
+            temp =letter[k]; //adding letters to temp to make two letter long words easier
         }
         
-if (!letter.length() == 0) {  
-    for (let i = 0; i < letter.length() + 1; i++) //adding words with more than one 
-    temp = temp + letter[i];
-    temp2 = temp; // to make longer combinations of words later
-    words.push(temp); // pushing two letter combinations
+if (!letter.length() == 0) {  //this is to try and make sure the loops run all the way through
+    for (let i = 0; i < letter.length() + 1; i++) //loop to add words with more than one letter
+    temp = temp + letter[i]; //temp now holds two letters
+    temp2 = temp; // duplicating temp to make longer combinations of words later because i want to keep the two letter long combination that was just created
+    words.push(temp); // pushing the two letter combinations
 
-    for (let j = 0; j < letter.length() + 1; j++) //loop through the rest of the letters
-    temp = temp + letter[j]; //three letters
+    for (let j = 0; j < letter.length() + 1; j++) //loop to create the other longer words
+    temp = temp + letter[j]; //temp now holds three letters
     words.push(temp); //pushing 3 letter words
     temp = temp + letter[k]; //creating 4 letter words
     temp2 = temp2 + temp; //creating 5 letter words
     words.push(temp); //pushing four letter words
-    words.push(temp2); //pushing 3 letter words
+    words.push(temp2); //pushing 5 letter words
 
-realWords(words); {
+realWords(words); { //this function filters out words that are not in the dictionary
     for(let m = 0; m < words.length() + 1; m++) {
         if(!dictionary.includes(words[m])){
-            words.pop(words[m]);
+            words.pop(words[m]); //removing any words that are not in the dictionary
         }else{
             return words;
         }
