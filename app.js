@@ -1,36 +1,10 @@
-//function to find root word with arrow notation and "filter"
-// function sixLetters(dictionary) {
-//   let rootWords = dictionary.filter((x) => x.length() == 6);
-// }
-
-//first attempt at same function : ORIGINAL
-// function sixLetters(dictionary) {
-//   const root = [];
-//   for (let i = 0; i < dictionary.length + 1; i++) {
-//     if (dictionary[i].substring(6) == null);
-//     root.push(dictionary[i]);
-//   }
-// }
-//   //randomly selecting a word from all the 6 letter words
-//   function selectedWord(root){
-//     return root[Math.floor(Math.random() * root.length())]
-// }
-
-// function splitInletters(mysteryWord); {
-//     const letter = [];
-//     for (i = 0; i < 7; i++) {
-//       letter.push(mysteryWord.substring(i));
-//     }
-//     return letter;
-// }
-
-//first attempt at function to find 6 letter word
-
+//while loop that controls if game is still happening by if the number of found words is the same as all possible ones
 while (words.length() !== found.length()) {
   console.log(unguessed);
   console.log(found);
 }
 
+//message if the game is beat, game is beat if number of found words matches the number of possible ones
 if (words.length() == found.length()) {
   console.log(
     `Congradulations! You beat the game! You sucessfully guessed all ${words.length()} words, impressive!`
@@ -38,25 +12,27 @@ if (words.length() == found.length()) {
   console.log(found);
 }
 
+//function to end the game even if all words aren't found
 function endGame() {
   if (nextGuess() == null) {
+    console.log(`Game ended, thanks for playing!`);
   }
 }
 
+//function to scramble the word for intial display and if the player requests
 function scramble() {
   let scrambledword = FINALword.split("");
   scrambledword.sort(function () {
     return Math.random() - 0.5;
   });
-
   scrambledword = FINALword.join("");
   return scrambledword;
 }
 
 console.log(scrambledword);
 
+//this function splits the scrambled words into its characters and puts them into an array to make making combinations using the same letters easier.
 function splitInletters(FINALword) {
-  //this function splits the scrambled words into its characters and puts them into an array to make making combinations using the same letters easier.
   const letter = FINALword.split("");
   return letter;
 
@@ -76,46 +52,9 @@ function splitInletters(FINALword) {
   }
 }
 
-//function to randomly select a word from the array of 6 letter words
-
-//function to find root word with arrow notation and "filter"
-//function to randomly select a word from the array of 6 letter words
-
-// function randomWord(rootWords) {
-//   function sixLetters(dictionary) {
-//     let rootWords = dictionary.filter((x) => x.length() == 6); //array with 6 letter words
-//     let wordNumber = Math.floor(Math.random() * rootWords.length()); // finding random place in array
-//     let mysteryWord = rootWords[wordNumber]; // finding word at that random place in array of 6 letter words
-//     //console.log(rootWords['wordNumber']); //printing string at that random place
-//   }
-// }
-
-//i want to add the letters of the mystery word to an array so they are more easily distinguisable
-//function to loop through the mystery word and add each letter to an array the "old way"
-
-//functions to compute all possible words with "mysteryword"
-
-// function allWords(letter); {
-//     if (letter.length == 1) {  //check if letter array if empty
-//         return letter;
-//     }else {
-//         let words = [];
-// let starting = letter.splice(0); //starting letter in word, i want this to move its way down the array
-// for (let i = 0; i < starting.length(); i++) //checking all words that start at [i] in the letter array
-//     for(let j = i + 1; j < letter.length(); j++) //checking all the the other letters after
-// let temp = (letter[0][j] + starting[i]);
-
-// if(dictionary.includes(temp)) {
-// return letter.map(temp);
-// }else{
-//     temp = next;
-// }
-//     }
-// }
-
-//these functions create all permutations possible with the given letters using the array of letters
+//these functions create all permutations possible with the given letters using the array of letters, real words will be sorted out later.
 function wordComb(letter) {
-  const words = [];
+  const words = []; //array to hold all possible word combinations
   let temp = " "; //temps used to hold permutations of words already created to make it easier to create longer words
   let temp2 = " ";
 
@@ -166,17 +105,19 @@ function wordComb(letter) {
 }
 
 let input = prompt("Start Guessing!"); //prompt for start of game
-let nextGuess = prompt(`Enter a guess;`);
+let nextGuess = prompt(`Enter a guess;`); //prompts for all guesses after
 
 //original method for finding inputted word in list
 function valid() {
-  const found = [];
-  const unguessed = words.splice(0, words.length());
+  const found = []; //to track what has been found
+  const unguessed = words.splice(0, words.length()); //copy of array with all possible words, used to track how many haven't been found and to help with displaying
   if (found.includes(word)) {
+    //scenario if word has already been found.
     console.log(`${word} has already been found, try again!`);
     console.clear();
   } else {
     if (words.includes(word)) {
+      //if word is correct and new it is pushed into found and removed from the unguessed array
       found.push(word);
       unguessed.pop(word);
       console.log(`Correct! ${word}`);
@@ -189,6 +130,7 @@ function valid() {
     }
   }
   if (word == "*") {
+    //if an asterisk if inputted, the word is rescrambled and display is reset.
     scramble();
     //display status of game again
     console.log(`The word has been rescrambled and the display reset`);
@@ -196,18 +138,3 @@ function valid() {
   }
   nextGuess();
 }
-
-//second method for findind inputted word in list using forEach
-// function searchWords() {
-//   const GuessedWords = [];
-//     words.forEach((function(words)) => {
-//         if (words[i] !== input) {
-//       alert(`Correct! ${input}`);
-//       GuessedWords.push(input);
-//       console.clear();
-//     } else {
-//       alert(`${input} is not a word!`);
-//       console.clear();
-//     }
-//   });
-// }
