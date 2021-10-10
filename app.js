@@ -105,12 +105,14 @@ if (!letter.length() == 0) {
 
     for (let j = 0; j < letter.length() + 1; j++) //loop through the rest of the letters
     words.push(part[k] + letter[i] + letter[j]); //pushing 3 letter words
-    temp = part[i] + letter[i] + letter[j]; //change to part.push?
+    temp = part[k] + letter[i] + letter[j]; //change to part.push?
+    words.push(temp + letters[i]);
  //checking if all the possible three letter words have been generated
-    if(temp = `${part[letter.length()]} + ${letter[letter.length()]} + ${letter[letter.length()]}) { 
+    if(temp = `${part[letter.length()]} + ${letter[letter.length()]} + ${letter[letter.length()]}`) 
+    words.push()
        
 
-    }
+    
 
 
     
