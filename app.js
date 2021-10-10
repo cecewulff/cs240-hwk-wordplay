@@ -3,17 +3,50 @@
 //   let rootWords = dictionary.filter((x) => x.length() == 6);
 // }
 
-//first attempt at same function 
-function sixLetters(dictionary) {
-  const root = [];
-  for (let i = 0; i < dictionary.length + 1; i++) {
-    if (dictionary[i].substring(6) == null);
-    root.push(dictionary[i]);
-  }
-    let mysteryWord = root[Math.floor(Math.random() * root.length())]
-    return mysteryWord;
-  }
+//first attempt at same function : ORIGINAL
+// function sixLetters(dictionary) {
+//   const root = [];
+//   for (let i = 0; i < dictionary.length + 1; i++) {
+//     if (dictionary[i].substring(6) == null);
+//     root.push(dictionary[i]);
+//   }
+// }
+//   //randomly selecting a word from all the 6 letter words
+//   function selectedWord(root){
+//     return root[Math.floor(Math.random() * root.length())]
+// }
 
+// function splitInletters(mysteryWord); {
+//     const letter = [];
+//     for (i = 0; i < 7; i++) {
+//       letter.push(mysteryWord.substring(i));
+//     }
+//     return letter; 
+// }
+
+
+//first attempt at same function 
+function splitInletters(mysteryWord); {
+    const letter = [];
+    for (i = 0; i < 7; i++) {
+      letter.push(mysteryWord.substring(i));
+    }
+    return letter; 
+
+    function selectedWord(root){
+        return root[Math.floor(Math.random() * root.length())]
+
+}
+function sixLetters(dictionary) {
+    const root = [];
+    for (let i = 0; i < dictionary.length + 1; i++) {
+      if (dictionary[i].substring(6) == null);
+      root.push(dictionary[i]);
+    }
+  } 
+  }
+  
+  
 
 //function to randomly select a word from the array of 6 letter words
 
@@ -32,13 +65,7 @@ function sixLetters(dictionary) {
 
 //i want to add the letters of the mystery word to an array so they are more easily distinguisable
 //function to loop through the mystery word and add each letter to an array the "old way"
-function splitInletters() {
-  const letter = [];
-  for (i = 0; i < 7; i++) {
-    letter.push(root[i]);
-  }
-  return letter;
-}
+
 
 //functions to compute all possible words with "mysteryword"
 
@@ -65,10 +92,11 @@ function allWords(letter) {
 
   for (i = 0; i < letter.length(); i++)
     for (j = 0; j < letter.length(); j++)
-      words.push(letter[0][j] + starting[i]);
+      //words.push(letter[0][j] + starting[i]);
+      return (letter[0][j] + starting[i]);
 
   if (dictionary.includes(words[words.length() - 1])) {
-    words.push(temp);
+    words.pop();
   } else {
   }
 }
