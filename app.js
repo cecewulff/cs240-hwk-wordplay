@@ -26,26 +26,54 @@
 
 //first attempt at function to find 6 letter word
 
+while (words.length() !== found.length()) {
+  console.log(unguessed);
+  console.log(found);
+}
+
+if (words.length() == found.length()) {
+  console.log(
+    `Congradulations! You beat the game! You sucessfully guessed all ${words.length()} words, impressive!`
+  );
+  console.log(found);
+}
+
+function endGame() {
+  if (nextGuess() == null) {
+  }
+}
+
+function scramble() {
+  let scrambledword = FINALword.split("");
+  scrambledword.sort(function () {
+    return Math.random() - 0.5;
+  });
+
+  scrambledword = FINALword.join("");
+  return scrambledword;
+}
+
+console.log(scrambledword);
+
 function splitInletters(FINALword) {
   //this function splits the scrambled words into its characters and puts them into an array to make making combinations using the same letters easier.
   const letter = FINALword.split("");
   return letter;
-}
 
-function sixLetters(dictionary) {
-  //this function searches the dictionary for 6 letter long words
-  const root = [];
-  for (let i = 0; i < dictionary.length + 1; i++) {
-    if (dictionary[i].substring(6) == null);
-    root.push(dictionary[i]);
+  function selectedWord(root) {
+    //this function randomly chooses a word from the new array of 6 letter words.
+    const FINALword = root[Math.floor(Math.random() * root.length())];
+    return FINALword;
   }
-  return root;
-}
-
-function selectedWord(root) {
-  //this function randomly chooses a word from the new array of 6 letter words.
-  const FINALword = root[Math.floor(Math.random() * root.length())];
-  return FINALword;
+  function sixLetters(dictionary) {
+    //this function searches the dictionary for 6 letter long words
+    const root = [];
+    for (let i = 0; i < dictionary.length + 1; i++) {
+      if (dictionary[i].substring(6) == null);
+      root.push(dictionary[i]);
+    }
+    return root;
+  }
 }
 
 //function to randomly select a word from the array of 6 letter words
@@ -137,27 +165,20 @@ function wordComb(letter) {
   }
 }
 
-function scramble() {
-  let scrambledword = FINALword.split("");
-  scrambledword.sort(function () {
-    return Math.random() - 0.5;
-  });
-  scrambledword = FINALword.join("");
-  return scrambledword;
-}
-
 let input = prompt("Start Guessing!"); //prompt for start of game
 let nextGuess = prompt(`Enter a guess;`);
 
 //original method for finding inputted word in list
 function valid() {
   const found = [];
+  const unguessed = words.splice(0, words.length());
   if (found.includes(word)) {
     console.log(`${word} has already been found, try again!`);
     console.clear();
   } else {
     if (words.includes(word)) {
       found.push(word);
+      unguessed.pop(word);
       console.log(`Correct! ${word}`);
       //alert(`Correct! ${word}`);
       console.clear();
@@ -166,8 +187,14 @@ function valid() {
       //alert(`${word} is not a word!`);
       console.clear();
     }
-    nextGuess();
   }
+  if (word == "*") {
+    scramble();
+    //display status of game again
+    console.log(`The word has been rescrambled and the display reset`);
+    console.clear();
+  }
+  nextGuess();
 }
 
 //second method for findind inputted word in list using forEach
