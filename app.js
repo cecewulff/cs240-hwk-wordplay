@@ -89,16 +89,43 @@ function selectedWord(root) {
 
 function wordComb(letter) {
   const words = [];
-    for (i = 0; i < letter.length(); i++) //loop through each letter so it starts first
-        if(!dictionary.includes(words[i])) {
-            words.push(letter[i]); // adding 
+  let part = [];
+  let temp = " "; 
+  
+    for (let k = 0; k < letter.length() + 1; k++) //looping through inital array to add single letter words
+        if(!words.includes(letter[k])) { //to avoid duplicates
+            words.push(letter[k]);  //adding if not already there
+            part.push(letter[k]); //adding letters to another array to help build words longer than 2 chars
         }
-    
-    for (j = i + 1; j < letter.length(); j++) //loop through the rest of the letters
-      //words.push(letter[0][j] + starting[i]);
-      words.push(letter[i] + letter[j]);
+        
+if (!letter.length() == 0) {  
+    for (let i = 0; i < letter.length() + 1; i++) //adding words with more than one 
+    part.push(part[k] + letter[i]); // to make longer combinations of words later
+    words.push(part[k] + letter[i]); // pushing two letter combinations
 
-  if (dictionary.includes(words[words.length() - 1])) {
+    for (let j = 0; j < letter.length() + 1; j++) //loop through the rest of the letters
+    words.push(part[k] + letter[i] + letter[j]); //pushing 3 letter words
+    temp = part[i] + letter[i] + letter[j]; //change to part.push?
+ //checking if all the possible three letter words have been generated
+    if(temp = `${part[letter.length()]} + ${letter[letter.length()]} + ${letter[letter.length()]}) { 
+       
+
+    }
+
+
+    
+    if
+    if()
+    words.push
+    words.push(part[i] + letter[i] + letter[j])
+    if (!dictionary.includes(letter[i] + letter[j])) {
+      words.push(letter[i] + letter[j]); 
+    }else{
+
+    }
+
+
+  
     words.pop();
   } else {
   }
