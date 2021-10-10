@@ -21,37 +21,34 @@
 //     for (i = 0; i < 7; i++) {
 //       letter.push(mysteryWord.substring(i));
 //     }
-//     return letter; 
+//     return letter;
 // }
-
 
 //first attempt at function to find 6 letter word
 
-function splitInletters(FINALword) { //this function splits the scrambled words into its characters and puts them into an array to make making combinations using the same letters easier. 
-    const letter = [];
-        for (i = 0; i < 7; i++) {
-      letter.push(FINALword.substring(i));
-    }
-    return letter; 
+function splitInletters(FINALword) {
+  //this function splits the scrambled words into its characters and puts them into an array to make making combinations using the same letters easier.
+  const letter = FINALword.split("");
+  return letter;
 }
 
-function sixLetters(dictionary) { //this function searches the dictionary for 6 letter long words
-    const root = [];
-    for (let i = 0; i < dictionary.length + 1; i++) {
-      if (dictionary[i].substring(6) == null);
-      root.push(dictionary[i]);
-    }
-    return root;
-  } 
-  
-function selectedWord(root) { //this function randomly chooses a word from the new array of 6 letter words. 
-    const FINALword = root[Math.floor(Math.random() * root.length())]
-    return FINALword;
+function sixLetters(dictionary) {
+  //this function searches the dictionary for 6 letter long words
+  const root = [];
+  for (let i = 0; i < dictionary.length + 1; i++) {
+    if (dictionary[i].substring(6) == null);
+    root.push(dictionary[i]);
   }
-  
+  return root;
+}
+
+function selectedWord(root) {
+  //this function randomly chooses a word from the new array of 6 letter words.
+  const FINALword = root[Math.floor(Math.random() * root.length())];
+  return FINALword;
+}
 
 //function to randomly select a word from the array of 6 letter words
-
 
 //function to find root word with arrow notation and "filter"
 //function to randomly select a word from the array of 6 letter words
@@ -67,7 +64,6 @@ function selectedWord(root) { //this function randomly chooses a word from the n
 
 //i want to add the letters of the mystery word to an array so they are more easily distinguisable
 //function to loop through the mystery word and add each letter to an array the "old way"
-
 
 //functions to compute all possible words with "mysteryword"
 
@@ -93,67 +89,98 @@ function selectedWord(root) { //this function randomly chooses a word from the n
 function wordComb(letter) {
   const words = [];
   let temp = " "; //temps used to hold permutations of words already created to make it easier to create longer words
-  let temp2 = " ";  
-  
-    for (let k = 0; k < letter.length() + 1; k++) //looping through the array for the first time to add possible single letter words
-        if(!words.includes(letter[k])) { //to avoid duplicates
-            words.push(letter[k]);  //adding if not already there
-            temp =letter[k]; //adding letters to temp to make two letter long words easier
-        }
-        
-if (!letter.length() == 0) {  //this is to try and make sure the loops run all the way through
-    for (let i = 0; i < letter.length() + 1; i++) //loop to add words with more than one letter
-    temp = temp + letter[i]; //temp now holds two letters
+  let temp2 = " ";
+
+  for (
+    let k = 0;
+    k < letter.length() + 1;
+    k++ //looping through the array for the first time to add possible single letter words
+  )
+    if (!words.includes(letter[k])) {
+      //to avoid duplicates
+      words.push(letter[k]); //adding if not already there
+      temp = letter[k]; //adding letters to temp to make two letter long words easier
+    }
+
+  if (!letter.length() == 0) {
+    //this is to try and make sure the loops run all the way through
+    for (
+      let i = 0;
+      i < letter.length() + 1;
+      i++ //loop to add words with more than one letter
+    )
+      temp = temp + letter[i]; //temp now holds two letters
     temp2 = temp; // duplicating temp to make longer combinations of words later because i want to keep the two letter long combination that was just created
     words.push(temp); // pushing the two letter combinations
 
-    for (let j = 0; j < letter.length() + 1; j++) //loop to create the other longer words
-    temp = temp + letter[j]; //temp now holds three letters
+    for (
+      let j = 0;
+      j < letter.length() + 1;
+      j++ //loop to create the other longer words
+    )
+      temp = temp + letter[j]; //temp now holds three letters
     words.push(temp); //pushing 3 letter words
     temp = temp + letter[k]; //creating 4 letter words
     temp2 = temp2 + temp; //creating 5 letter words
     words.push(temp); //pushing four letter words
     words.push(temp2); //pushing 5 letter words
+  }
 
-realWords(words); { //this function filters out words that are not in the dictionary
-    for(let m = 0; m < words.length() + 1; m++) {
-        if(!dictionary.includes(words[m])){
-            words.pop(words[m]); //removing any words that are not in the dictionary
-        }else{
-            return words;
-        }
-
+  //this function filters out words that are not in the dictionary
+  realWords(words);
+  for (let m = 0; m < words.length() + 1; m++) {
+    if (!dictionary.includes(words[m])) {
+      words.pop(words[m]); //removing any words that are not in the dictionary
+    } else {
+      return words;
     }
-    
+  }
 }
-   
+
+function scramble() {
+  let scrambledword = FINALword.split("");
+  scrambledword.sort(function () {
+    return Math.random() - 0.5;
+  });
+  scrambledword = FINALword.join("");
+  return scrambledword;
+}
 
 let input = prompt("Start Guessing!"); //prompt for start of game
+let nextGuess = prompt(`Enter a guess;`);
 
-//original method for findind inputted word in list
-// function Correct(input) {
-//   for (let i = 0; i < words.length + 1; i++)
-//     if (words[i] == input) {
-//       alert(`Correct! ${input}`);
-//     } else {
-//       alert(`${input} is not a word!`);
-//     }
-// }
-
-//second method for findind inputted word in list using forEach
-function searchWords() {
-  const GuessedWords = [];
-    words.forEach((function(words)) => {
-        if (words[i] !== input) {
-      alert(`Correct! ${input}`);
-      GuessedWords.push(input);
+//original method for finding inputted word in list
+function valid() {
+  const found = [];
+  if (found.includes(word)) {
+    console.log(`${word} has already been found, try again!`);
+    console.clear();
+  } else {
+    if (words.includes(word)) {
+      found.push(word);
+      console.log(`Correct! ${word}`);
+      //alert(`Correct! ${word}`);
       console.clear();
     } else {
-      alert(`${input} is not a word!`);
+      console.log(`${word} is not a word!`);
+      //alert(`${word} is not a word!`);
       console.clear();
     }
-  });
+    nextGuess();
+  }
 }
 
-
-
+//second method for findind inputted word in list using forEach
+// function searchWords() {
+//   const GuessedWords = [];
+//     words.forEach((function(words)) => {
+//         if (words[i] !== input) {
+//       alert(`Correct! ${input}`);
+//       GuessedWords.push(input);
+//       console.clear();
+//     } else {
+//       alert(`${input} is not a word!`);
+//       console.clear();
+//     }
+//   });
+// }
