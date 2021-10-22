@@ -1,56 +1,29 @@
-//while loop that controls if game is still happening by if the number of found words is the same as all possible ones
-while (words.length() !== found.length()) {
-  console.log(unguessed);
-  console.log(found);
-}
+let input = prompt("Start Guessing!"); //prompt for start of game
 
-//message if the game is beat, game is beat if number of found words matches the number of possible ones
-if (words.length() == found.length()) {
-  console.log(
-    `Congradulations! You beat the game! You sucessfully guessed all ${words.length()} words, impressive!`
-  );
-  console.log(found);
-}
-
-//function to end the game even if all words aren't found
-function endGame() {
-  if (nextGuess() == null) {
-    console.log(`Game ended, thanks for playing!`);
+function sixLetters(dictionary) {
+  //this function searches the dictionary for 6 letter long words
+  const root = [];
+  for (let i = 0; i < dictionary.length + 1; i++) {
+    if ((dictionary[i].length = 6)); //changed this if statement
+    root.push(dictionary[i]);
   }
+  return root;
 }
+sixLetters(dictionary);
 
-//function to scramble the word for intial display and if the player requests
-function scramble() {
-  let scrambledword = FINALword.split("");
-  scrambledword.sort(function () {
-    return Math.random() - 0.5;
-  });
-  scrambledword = FINALword.join("");
-  return scrambledword;
+function selectedWord(root) {
+  //this function randomly chooses a word from the new array of 6 letter words.
+  const FINALword = root[Math.floor(Math.random() * root.length())];
+  return FINALword;
 }
-
-console.log(scrambledword);
+selectedWord(root);
 
 //this function splits the scrambled words into its characters and puts them into an array to make making combinations using the same letters easier.
 function splitInletters(FINALword) {
   const letter = FINALword.split("");
   return letter;
-
-  function selectedWord(root) {
-    //this function randomly chooses a word from the new array of 6 letter words.
-    const FINALword = root[Math.floor(Math.random() * root.length())];
-    return FINALword;
-  }
-  function sixLetters(dictionary) {
-    //this function searches the dictionary for 6 letter long words
-    const root = [];
-    for (let i = 0; i < dictionary.length + 1; i++) {
-      if (dictionary[i].substring(6) == null);
-      root.push(dictionary[i]);
-    }
-    return root;
-  }
 }
+splitInletters(FINALword);
 
 //these functions create all permutations possible with the given letters using the array of letters, real words will be sorted out later.
 function wordComb(letter) {
@@ -92,9 +65,12 @@ function wordComb(letter) {
     words.push(temp); //pushing four letter words
     words.push(temp2); //pushing 5 letter words
   }
+  return words;
+}
+wordComb(letter);
 
-  //this function filters out words that are not in the dictionary
-  realWords(words);
+//this function filters out words that are not in the dictionary
+function realWords(words) {
   for (let m = 0; m < words.length() + 1; m++) {
     if (!dictionary.includes(words[m])) {
       words.pop(words[m]); //removing any words that are not in the dictionary
@@ -103,9 +79,23 @@ function wordComb(letter) {
     }
   }
 }
+realWords(words);
 
-let input = prompt("Start Guessing!"); //prompt for start of game
-let nextGuess = prompt(`Enter a guess;`); //prompts for all guesses after
+//function to scramble the word for intial display and if the player requests
+function scramble() {
+  let scrambledword = FINALword.split("");
+  scrambledword.sort(function () {
+    return Math.random() - 0.5;
+  });
+  scrambledword = FINALword.join("");
+  return scrambledword;
+}
+scramble();
+//console.log(scrambledword);
+
+function NextGuess() {
+  let nextGuess = prompt(`Enter a guess;`); //prompts for all guesses after
+}
 
 //original method for finding inputted word in list
 function valid() {
@@ -138,3 +128,32 @@ function valid() {
   }
   nextGuess();
 }
+valid();
+
+//while loop that controls if game is still happening by if the number of found words is the same as all possible ones
+function contGame() {
+  while (words.length() !== found.length()) {
+    console.log(unguessed);
+    console.log(found);
+  }
+}
+contGame();
+
+//message if the game is beat, game is beat if number of found words matches the number of possible ones
+function gameWon() {
+  if (words.length() == found.length()) {
+    console.log(
+      `Congradulations! You beat the game! You sucessfully guessed all ${words.length()} words, impressive!`
+    );
+    console.log(found);
+  }
+}
+gameWon();
+
+//function to end the game even if all words aren't found
+function endGame() {
+  if (nextGuess() == null) {
+    console.log(`Game ended, thanks for playing!`);
+  }
+}
+endGame();
